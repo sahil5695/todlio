@@ -1,0 +1,24 @@
+<div class="login-page" ng-controller="loginController" ng-init="signup=false">
+
+    <h1 class="logo">Todlio<h1>
+
+    <form ng-submit="signingUp()">
+        <input type="text" class="login-block login-input-field" ng-show="signup" placeholder="Full Name" ng-model="fullName" required/>
+        <input type="text" class="login-block login-input-field" ng-show="signup" placeholder="Username" ng-model="userNameSignup" required/>
+        <input type="email" class="login-block login-input-field" ng-show="signup" placeholder="E-Mail" ng-model="email" required/>
+        <input type="password" class="login-block login-input-field" ng-show="signup" placeholder="Password" ng-model="passwordSignup" required/>
+        <input type="password" class="login-block login-input-field" ng-show="signup" placeholder="Confirm Password" ng-model="confirmPassword" required/>
+        <button type="submit" class="login-block login-button" ng-show="signup">Signup</button>
+    </form>
+
+    <form ng-submit="logingIn()">
+        <input type="text" class="login-block login-input-field" ng-hide="signup" placeholder="Username" ng-model="userNameLogin" required/>
+        <input type="password" class="login-block login-input-field" ng-hide="signup" placeholder="Password" ng-model="passwordLogin" required/>
+        <button type="submit" class="login-block login-button" ng-hide="signup">Login</button>
+        <div style="border-top:1px solid #03A9F4;width:220px;margin:10px auto;opacity:0.5;" ng-hide="signup"></div>
+    </form>
+
+    <button class="login-block login-button" ng-click="signup = true" ng-hide="signup" >New User</button>
+    <div class="back" ng-click="signup=false" ng-show="signup">Back</div class="back">
+
+</div>

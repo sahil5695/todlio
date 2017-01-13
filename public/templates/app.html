@@ -1,0 +1,77 @@
+<div style="height:100%;" ng-controller="editorController">
+<div id="top_nav" class="container">
+  <div class="nav_container">
+    <h4 class="logo nav-logo">Todlio</h4>
+    <h4 class="nav-date">{{ today_date | date : "HH:mm  EEEE, MMMM d, y" }}</h4>
+    <h4 class="nav-logout" ng-click="logOut()"> <b>{{ currentusername }}</b> <span>Logout</span></h4>
+  </div>
+</div>
+<div id="main_app">
+  <div id="articlelist">
+    <div>
+    <img src="images/plus.svg" class="add-button" ng-click="addButton()"/>      
+    </div>
+    <ul class="left-panel-list">
+        <img src="images/ripple.svg" style="margin:30px auto;;height: 40px;width: 40px;display: block" ng-show="articleLoading"/>
+        <div ng-show="addArticle" style="text-align: center;">
+           <!--<img src="images/arrow-up.svg" class="upstart"/>        -->
+           <h3 style="text-align: center;font-weight: 400;">Let's Start Adding</h3>
+        </div>
+        <li ng-repeat="article in articles" ng-show="articles.length > 0" ng-click="detail(article)">
+          <div ng-class="{ selected : $index == todoNumber }" ng-click="setNumber($index)"> 
+            <h3 class="list-title">{{ article.title }}</h3>
+            <!-- <h5 class="list-note">{{ todo.note }}</h5> -->
+            <h6 class="list-date">{{ article.note_date | date : "H:m  EEE, MMM d, y" }}</h6>
+          </div>
+        </li>
+    </ul>
+  </div>
+
+  <div id="editor_tools">
+
+    <img src="images/trash.svg" class="delete" ng-click="delete(article._id)" ng-show="articledisplay"/>
+    <img src="images/done.svg" class="add" ng-click="newEntry()" ng-show="adddisplay"/>
+    <img src="images/ellipsis.svg" style="position: absolute;top:12px;left:42%;height: 25px;width: 25px;opacity:0.4;" ng-show="postingArticle"/>
+    
+    <ul>
+      <li>
+        <img class="editing-icon bold" ng-click="bold()" src="images/bold-text.svg"/>
+      </li>
+      <li>
+        <img class="editing-icon italic" ng-click="italic()" src="images/italic-text.svg"/>
+      </li>
+      <li>
+        <img class="editing-icon underline" ng-click="underline()" src="images/underline-text.svg"/>
+      </li>
+      <!-- <li>
+        <img class="editing-icon" src="images/web-link.svg"/>
+      </li>
+      <li>
+        <img class="editing-icon" src="images/strikethrough.svg"/>
+      </li>
+      <li>
+        <img class="editing-icon" src="images/color-palette.svg"/>
+      </li>
+      <li>
+        <img class="editing-icon" src="images/add-image.svg"/>
+      </li>
+      <li>
+        <img class="editing-icon" src="images/new-line.svg"/>
+      </li>
+      <li>
+        <img class="editing-icon" src="images/ol-list.svg"/>
+      </li>
+      <li>
+        <img class="editing-icon" src="images/ul-list.svg"/>
+      </li> -->
+    </ul>
+  </div>
+
+  <div ng-keypress="upArticle()" id="article_content">
+    <div ng-keypress="updateTitle(updatearticle)" contenteditable ng-model="new_title" class="title_content">
+    </div>
+    <div ng-keypress="updateContent(updatearticle)" contenteditable ng-model="new_content" class="note_content">
+    </div>
+  </div>
+</div>
+</div>
