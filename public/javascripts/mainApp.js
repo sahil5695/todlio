@@ -1,4 +1,4 @@
-var app = angular.module("mainApp",["ngRoute"]);
+var app = angular.module("mainApp",['ngRoute','ngAnimate']);
 
 app.config(function($routeProvider, $locationProvider){
   
@@ -35,6 +35,19 @@ app.directive("contenteditable", function() {
   };
 });
 
+app.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+ 
+                event.preventDefault();
+            }
+        });
+    };
+});
 // app.factory("authentication", function($http,$window){
 
 //   var saveToken = function(token) {

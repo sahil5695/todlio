@@ -12,6 +12,7 @@
 
 html, body {
   height: 100%;
+  width: 100%;
   margin:0;
   padding:0;
 }
@@ -30,6 +31,21 @@ html, body {
   overflow: hidden;
 }
 
+#loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 20000;
+  background-color: #fff;
+}
+
+#loading img {
+  position: absolute;
+  top: 45%;
+  left: 48%;
+  height: 60px;
+  width: 60px;
+}
 
 /*Login page*/
 
@@ -182,7 +198,7 @@ html, body {
   border-right: 1px solid #eee;
 }
 
-.left-panel-list li:first-child{
+.left-panel-list ul:first-child{
   border-top: 1px solid #eee;
 }
 
@@ -279,6 +295,15 @@ html, body {
   display: block;
 }
 
+#article_content h1{
+  margin-top:80px;
+  font-size: 4em;
+  opacity: 0.05;
+  text-align: center;
+  margin-right: 150px;
+
+}
+
 .title_content {
   padding: 5px;
   margin: 30px 15px;
@@ -308,6 +333,68 @@ html, body {
   animation-iteration-count: infinite;
 }
 
+#addmodal {
+  position: fixed;
+  display:block;
+  z-index: 10000;
+  background-color:rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.addanimate {
+  padding: 20px 30px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  max-width: 600px;
+  background-color: #fff;
+  animation: 0.5s adding;
+  animation-fill-mode:forwards;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addanimate.ng-hide {
+  margin-left: auto;
+  margin-right: auto;
+  animation: 0.5s addingclose;
+  animation-fill-mode:forwards;
+}
+
+#addmodal .titleinput{
+  display: block;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin: 15px 0;
+  font-size: 3em;
+  font-weight: 700;
+}
+
+#addmodal button{
+  outline: none;
+  background-color: #2196F3;
+  font-size: 1.2em;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 6px 15px;
+  margin: 30px 20px;
+}
+
+[contenteditable] {
+  cursor: text;
+}
+
+[contenteditable]:empty:before {
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+  color: #ccc;
+}
+
 @keyframes uparrow {
   0% {
     margin-top: 30px;
@@ -320,4 +407,36 @@ html, body {
   100% {
     margin-top: 30px;
   }
+}
+
+@keyframes adding {
+  from {
+    margin-top: 0;
+    opacity: 0;
+  }
+
+  to {
+    margin-top: 80px;
+    opacity: 1;
+  }
+}
+
+@keyframes addingclose {
+  
+  from {
+    margin-top: 80px;
+    opacity: 1;
+  }
+  
+  to {
+    margin-top: 0;
+    opacity: 0;
+  }
+  
+}
+
+@media screen and (max-width:1125px) {
+  #article_content h1{
+    font-size: 3em;
+  } 
 }

@@ -1,4 +1,9 @@
 <div style="height:100%;" ng-controller="editorController">
+
+  <div id="loading" ng-show="loading">  
+    <img src="images/ripple.svg"/>
+  </div>  
+
 <div id="top_nav" class="container">
   <div class="nav_container">
     <h4 class="logo nav-logo">Todlio</h4>
@@ -12,10 +17,10 @@
     <img src="images/plus.svg" class="add-button" ng-click="addButton()"/>      
     </div>
     <ul class="left-panel-list">
-        <img src="images/ripple.svg" style="margin:30px auto;;height: 40px;width: 40px;display: block" ng-show="articleLoading"/>
-        <div ng-show="addArticle" style="text-align: center;">
-           <!--<img src="images/arrow-up.svg" class="upstart"/>        -->
-           <h3 style="text-align: center;font-weight: 400;">Let's Start Adding</h3>
+        <!--<img src="images/ripple.svg" style="margin:30px auto;;height: 40px;width: 40px;display: block" ng-show="articleLoading"/>-->
+        <div ng-show="addarticle" style="text-align: center;">
+           <img src="images/arrow-up.svg" class="upstart"/>        
+           <!--<h3 style="text-align: center;font-weight: 400;">Let's Start Adding</h3>-->
         </div>
         <li ng-repeat="article in articles" ng-show="articles.length > 0" ng-click="detail(article)">
           <div ng-class="{ selected : $index == todoNumber }" ng-click="setNumber($index)"> 
@@ -27,13 +32,13 @@
     </ul>
   </div>
 
-  <div id="editor_tools">
+  <div id="editor_tools" ng-show="!addarticle">
 
-    <img src="images/trash.svg" class="delete" ng-click="delete(article._id)" ng-show="articledisplay"/>
-    <img src="images/done.svg" class="add" ng-click="newEntry()" ng-show="adddisplay"/>
+    <img src="images/trash.svg" class="delete" ng-show="!addarticle" ng-click="delete(article._id)" ng-show="articledisplay"/>
+    <!--<img src="images/done.svg" class="add" ng-click="newEntry()" ng-show="adddisplay"/>-->
     <img src="images/ellipsis.svg" style="position: absolute;top:12px;left:42%;height: 25px;width: 25px;opacity:0.4;" ng-show="postingArticle"/>
     
-    <ul>
+    <ul ng-show="!addarticle">
       <li>
         <img class="editing-icon bold" ng-click="bold()" src="images/bold-text.svg"/>
       </li>
@@ -67,10 +72,20 @@
     </ul>
   </div>
 
-  <div ng-keypress="upArticle()" id="article_content">
-    <div ng-keypress="updateTitle(updatearticle)" contenteditable ng-model="new_title" class="title_content">
+  <div id="article_content">
+
+    <div id="addmodal" ng-show="addmodal" ng-click="hideadd($event)">
+      <form ng-show="addmodal" class="addanimate" ng-submit="newEntry()">
+        <div class="titleinput" contenteditable="true" placeholder="Title" ng-enter="preventEnter()" type="text" ng-model="add_title"></div>
+        <img src="images/done.svg" ng-click="newEntry()" style="width: 35px;padding: 20px 0 10px;cursor: pointer"/>
+        <!--<button type="submit">Add</button>-->
+      </form>    
     </div>
-    <div ng-keypress="updateContent(updatearticle)" contenteditable ng-model="new_content" class="note_content">
+
+    <h1 ng-show="addarticle">Welcome, Let's Start <br>Adding Some Articles</h1>
+    <div ng-keydown="upArticle()" ng-show="!addarticle" placeholder="Can't Be Empty" contenteditable ng-model="new_title" class="title_content">
+    </div>
+    <div ng-keydown="upArticle()" ng-show="!addarticle" placeholder="Whats on your mind?" contenteditable ng-model="new_content" class="note_content">
     </div>
   </div>
 </div>
