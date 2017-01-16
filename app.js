@@ -40,7 +40,7 @@ app.use(function (err, req, res, next) {
 });
 
 app.use(function(req, res, next) {
-  res.append("Access-Control-Allow-Origin", "*");
+  res.append("Access-Control-Allow-Origin", req.headers.origin || "*");
   res.append("Access-Control-Allow-Credentials", "true");
   res.append("Access-Control-Allow-Methods", ['GET', 'POST', 'PUT', 'DELETE']);
   res.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
