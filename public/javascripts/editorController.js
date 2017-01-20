@@ -13,6 +13,8 @@ app.controller("editorController",function($scope,$http,$interval,$location,$win
     $scope.today_date = Date.now();
   },800);
 
+
+
   $scope.addButton = function(){
     // $scope.new_title = "Title";
     // $scope.new_content = "What's going on your mind?";
@@ -122,6 +124,7 @@ app.controller("editorController",function($scope,$http,$interval,$location,$win
         updatearticle = article;
         $scope.upArticle = function(){
           console.log('Put API sWorking');
+  
           $scope.postingArticle = true;            
           $http.put('/articles/' + updatearticle._id , updatearticle, {
             headers:{
@@ -137,7 +140,11 @@ app.controller("editorController",function($scope,$http,$interval,$location,$win
     };
 
      
- 
+    $scope.spacing = function(content) {
+      if (/^(\w+\s?)*\s*$/.test(content)){
+        content.replace(/\s+$/, '');
+      }
+    }
   
   $scope.todoNumber = -1;
   $scope.setNumber = function(index){

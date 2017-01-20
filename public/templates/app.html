@@ -76,16 +76,16 @@
 
     <div id="addmodal" ng-show="addmodal" ng-click="hideadd($event)">
       <form ng-show="addmodal" class="addanimate" ng-submit="newEntry()">
-        <div class="titleinput" contenteditable="true" placeholder="Title" ng-enter="preventEnter()" type="text" ng-model="add_title"></div>
+        <div class="titleinput" contenteditable="true" ng-maxlength="5" ng-trim="true" placeholder="Title" ng-enter="preventEnter()" type="text" ng-model="add_title"></div>
         <img src="images/done.svg" ng-click="newEntry()" style="width: 35px;padding: 20px 0 10px;cursor: pointer"/>
         <!--<button type="submit">Add</button>-->
       </form>    
     </div>
 
     <h1 ng-show="addarticle">Welcome, Let's Start <br>Adding Some Articles</h1>
-    <div ng-keydown="upArticle()" ng-show="!addarticle" placeholder="Can't Be Empty" contenteditable ng-model="new_title" class="title_content">
+    <div ng-keydown="upArticle()" ng-show="!addarticle" placeholder="Can't Be Empty" ng-maxlength="20" contenteditable ng-model="new_title" class="title_content">
     </div>
-    <div ng-keydown="upArticle()" ng-show="!addarticle" placeholder="Whats on your mind?" contenteditable ng-model="new_content" class="note_content">
+    <div ng-keydown="upArticle()" ng-show="!addarticle" style="text-align: justify" placeholder="Whats on your mind?" contenteditable ng-model="new_content" class="note_content">
     </div>
   </div>
 </div>

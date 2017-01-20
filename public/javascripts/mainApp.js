@@ -48,24 +48,3 @@ app.directive('ngEnter', function () {
         });
     };
 });
-// app.factory("authentication", function($http,$window){
-
-//   var saveToken = function(token) {
-//     $window.localStorage['mysteryToken'];
-//   };
-
-//   var getToken = function(){
-//     return $window.localStorage['mysteryToken'];
-//   };
-
-//   var logout = function(){
-//     $window.localStorage.removeItem('mysteryToken');
-//   };
-
-//   return {
-//       saveToken : saveToken,
-//       getToken : getToken,
-//       logout : logout
-//     };
-
-// });

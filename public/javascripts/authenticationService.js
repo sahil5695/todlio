@@ -33,7 +33,7 @@ app.factory('authentication',function($http, $window){
         payload = $window.atob(payload);
         payload = JSON.parse(payload);
         return {
-            email : payload.email,
+            username : payload.username,
             name : payload.name
         };
         }
