@@ -76,7 +76,7 @@
 
     <div id="addmodal" ng-show="addmodal" ng-click="hideadd($event)">
       <form ng-show="addmodal" class="addanimate" ng-submit="newEntry()">
-        <div class="titleinput" contenteditable="true" ng-maxlength="5" ng-trim="true" placeholder="Title" ng-enter="preventEnter()" type="text" ng-model="add_title"></div>
+        <div class="titleinput" contenteditable="true" placeholder="Title" ng-enter="preventEnter()" type="text" ng-model="add_title"></div>
         <img src="images/done.svg" ng-click="newEntry()" style="width: 35px;padding: 20px 0 10px;cursor: pointer"/>
         <!--<button type="submit">Add</button>-->
       </form>    

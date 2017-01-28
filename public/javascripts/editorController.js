@@ -122,6 +122,9 @@ app.controller("editorController",function($scope,$http,$interval,$location,$win
         $scope.articledisplay = true;
         $scope.adddisplay = false;
         updatearticle = article;
+
+
+
         $scope.upArticle = function(){
           console.log('Put API sWorking');
   
@@ -139,13 +142,9 @@ app.controller("editorController",function($scope,$http,$interval,$location,$win
         };
     };
 
-     
-    $scope.spacing = function(content) {
-      if (/^(\w+\s?)*\s*$/.test(content)){
-        content.replace(/\s+$/, '');
-      }
-    }
-  
+    //  if (/^(\w+\s?)*\s*$/.test($scope.new_content)){
+    //     $scope.new_content.replace(/\s+$/, '');
+    //   };
   $scope.todoNumber = -1;
   $scope.setNumber = function(index){
     $scope.todoNumber = index;
@@ -189,6 +188,7 @@ app.controller("editorController",function($scope,$http,$interval,$location,$win
 
   $scope.bold = function() {
       document.execCommand('bold', false, null);
+      $scope.bold = true;
   };
   $scope.italic = function() {
       document.execCommand('italic', false, null);

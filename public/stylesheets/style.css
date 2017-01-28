@@ -235,7 +235,7 @@ html, body {
   bottom: 0;
 }
 
-#editor_tools ul{
+/*#editor_tools ul{
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -244,11 +244,11 @@ html, body {
   justify-content: space-between;
   height: 100px;
   margin-top: 20px;
-}
+}*/
 
 .editing-icon {
-  max-width: 15px;
-  opacity: 0.5;
+  max-width: 16px;
+  opacity: 0.6;
   cursor: pointer;
 }
 
@@ -256,15 +256,15 @@ html, body {
   opacity: 1;
 }
 
-#editor_tools ul li{
-  list-style: none;
+#editor_tools ul{
+  text-align: center;
 }
 
-#editor_tools .add {
-  /*transition: all ease 1s;*/
-  /*transform: scale(0);*/
-  max-width:30px;display:block;margin:47.5px auto;cursor:pointer;
-  /*opacity: 0;*/
+
+#editor_tools ul li{
+  list-style: none;
+  margin: 15px auto;
+
 }
 
 #editor_tools .delete {
@@ -298,7 +298,7 @@ html, body {
 #article_content h1{
   margin-top:80px;
   font-size: 4em;
-  opacity: 0.05;
+  opacity: 0.2;
   text-align: center;
   margin-right: 150px;
 
@@ -325,7 +325,6 @@ html, body {
   font-size: 1.1em;
   line-height: 25px;
   font-weight: 500;
-  
 }
 
 .upstart {
@@ -397,6 +396,14 @@ html, body {
   content: attr(placeholder);
   display: block; /* For Firefox */
   color: #ccc;
+}
+
+.text_tool ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 80px;
+  margin: 0 auto;
 }
 
 @keyframes uparrow {
